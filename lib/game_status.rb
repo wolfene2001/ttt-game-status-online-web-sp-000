@@ -12,26 +12,18 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-  binding.pry
+  #binding.pry
 WIN_COMBINATIONS.find do |combo|
+  board[combo[0]] == board[combo[1]] && board[combo[2]] == board[combo[1]] && position_taken?(board, combo[0])
 
-combo =
-  board[combo[0]] == board[combo[1]] && board[combo[2]]
-  ||
-  board[combo[3]] == board[combo[4]] && board[combo[5]]
-  ||
-  board[combo[6]] == board[combo[7]] && board[combo[8]]
-  ||
-  board[combo[0]] == board[combo[3]] && board[combo[6]]
-  ||
-  board[combo[1]] == board[combo[4]] && board[combo[7]]
-  ||
-  board[combo[2]] == board[combo[5]] && board[combo[8]]
-  ||
-  board[combo[0]] == board[combo[4]] && board[combo[8]]
-  ||
-  board[combo[2]] == board[combo[4]] && board[combo[6]]
-else won?
-  false
 end
+end
+
+def full?(board)
+  board.find do |token|
+    if token == " "
+    return false
+   end
+end
+true
 end
