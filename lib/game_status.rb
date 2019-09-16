@@ -36,18 +36,21 @@ def draw?(board)
 end
 
 def over?(board)
+
   if draw?(board) == true || full?(board) == true || !!won?(board) == true
     return true
 
-else
-return false
-end
+  else
+    return false
+  end
 end
 
 def winner(board)
-  if !!won?(board) == true && WIN_COMBINATIONS == ["X","X","X"]
-    return "X"
-  elsif !!won?(board) == true && WIN_COMBINATIONS == ["O","O","O"]
-    return "O"
+  if combo = won?(board)
+    return board[combo[0]]
+# #  elsif !!won?(board) == true && ["O","O","O"]
+#     return "O"
+# else
+#  nil
   end
 end
