@@ -12,11 +12,9 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-  #binding.pry
-WIN_COMBINATIONS.find do |combo|
+  WIN_COMBINATIONS.find do |combo|
   board[combo[0]] == board[combo[1]] && board[combo[2]] == board[combo[1]] && position_taken?(board, combo[0])
-
-end
+  end
 end
 
 def full?(board)
@@ -26,4 +24,30 @@ def full?(board)
    end
 end
 true
+end
+
+def draw?(board)
+  if full?(board) == true && !won?(board)
+  return true
+
+  else
+  return false
+  end
+end
+
+def over?(board)
+  if draw?(board) == true || full?(board) == true || !!won?(board) == true
+    return true
+
+else
+return false
+end
+end
+
+def winner(board)
+  if !!won?(board) == true && WIN_COMBINATIONS == ["X","X","X"]
+    return "X"
+  elsif !!won?(board) == true && WIN_COMBINATIONS == ["O","O","O"]
+    return "O"
+  end
 end
